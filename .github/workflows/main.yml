@@ -7,7 +7,7 @@ on:
   pull_request:
       types: [opened, synchronize, reopened]
 
-jobs:
+jobs: 
   sonarqube:
     runs-on: ubuntu-latest
     steps:
