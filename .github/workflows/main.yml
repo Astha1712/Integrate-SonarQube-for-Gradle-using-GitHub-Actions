@@ -15,8 +15,14 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '11'
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
+    # Step 4: SonarCloud Scan
+    - name: SonarCloud Scan
+      working-directory: ./MyWebApp
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      run: |
+        mvn sonar:sonar \
+          -Dsonar.projectKey=Astha1712_GithubActionApp \
+          -Dsonar.organization=astha1712 \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=$SONAR_TOKEN
